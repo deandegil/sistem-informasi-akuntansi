@@ -209,3 +209,48 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Jurnal Penutup
 ![image](https://github.com/santaadelia/sistem-informasi-akuntansi/assets/152131711/adcadbef-bdca-4f68-9950-2419b3b18ab6)
 
+## Instalasi & Menjalankan di Docker Desktop
+
+### Prasyarat
+- Docker Desktop sudah terinstall dan berjalan
+
+### Langkah-langkah
+
+1. **Copy file .env**
+   
+   Jika belum ada file `.env`, copy dari `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Build image Docker**
+   ```bash
+   docker-compose build
+   ```
+
+3. **Jalankan container**
+   ```bash
+   docker-compose up -d
+   ```
+
+4. **Jalankan migrasi database**
+   ```bash
+   docker-compose exec app php artisan migrate
+   ```
+
+5. **Generate application key (opsional, jika belum)**
+   ```bash
+   docker-compose exec app php artisan key:generate
+   ```
+
+6. **Akses aplikasi**
+   
+   Buka browser dan akses: [http://localhost:9000](http://localhost:9000)
+
+### Catatan
+- Pastikan direktori `storage` dan `bootstrap/cache` memiliki permission yang benar.
+- Jika ada error, cek log container dengan:
+  ```bash
+  docker-compose logs app
+  ```
+
